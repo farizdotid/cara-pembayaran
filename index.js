@@ -9,7 +9,15 @@ const BankBri = require('./data/BankBri');
 const BankMandiri = require('./data/BankMandiri');
 const BankCimb = require('./data/BankCimb');
 
-app.use(express.static('./astro'));
+const path = require('path');
+
+// Serve static files from the "astro" folder
+app.use(express.static(path.join(__dirname, 'astro')));
+
+// Handle requests to the root URL ("/")
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'astro', 'index.html'));
+});
 
 app.get('/banks', (req, res) => {
     const dataList = BankData.generateDataList();
