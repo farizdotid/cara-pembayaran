@@ -9,9 +9,7 @@ const BankBri = require('./data/BankBri');
 const BankMandiri = require('./data/BankMandiri');
 const BankCimb = require('./data/BankCimb');
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+app.use(express.static('astro'));
 
 app.get('/banks', (req, res) => {
     const dataList = BankData.generateDataList();
